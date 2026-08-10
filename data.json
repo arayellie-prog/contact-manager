@@ -1,1 +1,1 @@
-[{"name": "Alice", "phone": ["888"]}, {"name": "Tom", "phone": ["456", "123"]}]
+[{"id": 1, "name": "Aray", "phone": 888}, {"id": 3, "name": "Ellie", "phone": 999}, {"id": 4, "name": "Gloria", "phone": 666}]

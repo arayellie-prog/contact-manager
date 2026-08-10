@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <tittle>联系人通讯录</tittle>
+    </head>
+    <body>
+        <h2 style="color:chocolate">通讯录列表</h2>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>联系电话</th>
+                <th>操作</th>
+            </tr>
+            {% for item in contacts %}
+            <tr>
+                <td>{{item.id}}</td>
+                {% if edit_id==item.id %}
+                <td>
+                    <form action="/update" method='post'>
+                        <input type="'hidden" id="id" name="edit_id" value="{{item.id}}">
+                    <input type="text" id="name" name="edit_name" value="{{item.name}}">
+                </td>
+                <td>
+                    <input type="number" id="phone" name="edit_phone" value="{{item.phone}}">
+                </td>
+                <td>
+                    
+                        <button type="submit" name="edit" >保存</button>
+                    </form>
+                </td>
+                {%else%}
+
+                <td>{{item.name}}</td>
+                <td>{{item.phone}}</td>
+                {%endif%}
+                <td>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="del_id" value="{{item.id}}">
+                        <button type="submit" name="del_id" value="{{item.id}}">删除</button>
+                    </form>
+                     <a href="/edit/{{item.id}}" >   
+                        <button type="submit" name="edit_id" value="{{item.id}}">修改</button>
+                     </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+            </table>
+            <form action="/contacts" method="post">
+                <label for'name'>姓名：</label>
+                <input type="text" id="name" name="name">
+                <label for'phone'>联系电话：</label>
+                <input type="number" id="phone" name="phone">
+                <button type="submit">添加</button>
+            </form>
+        
+    </body>
+</html>

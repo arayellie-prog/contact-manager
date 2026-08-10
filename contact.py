@@ -1,7 +1,8 @@
 class Contact:
-    def __init__(self,name,phones):
+    def __init__(self,id,name,phones):
+        self.id=id
         self.name=name
-        self.phone=phones or []
+        self.phone=phones 
     def add_phone(self,addPhone):
         if addPhone in self.phone:
             return None
@@ -9,18 +10,15 @@ class Contact:
             self.phone.append(addPhone)
             return True
         
-    def edit_name(self,editName):
-        self.name=editName
+  
         
-
-    def edit_phone(self,num,editPhone):
-            num=int(num)
-            self.phone[num]=editPhone
-    def del_phone(self,index):
-        index=int(index)
-        self.phone.pop(index)
+    def update(self,edit_name,edit_phone):
+        self.name=edit_name
+        self.phone=edit_phone
+   
+    
     def to_dict(self):
-        dic= {'name':self.name,'phone':self.phone}
+        dic= {'id':self.id,'name':self.name,'phone':self.phone}
         return dic
     def show_phone(self):
         show=[]
